@@ -2,4 +2,4 @@
 # our irq list to make sure it hasn't changed
 #
 
-ACTION=="add|remove", RUN+="/usr/bin/killall -SIGHUP irqbalance"
+ACTION=="add|remove", RUN+="/usr/bin/systemctl try-reload-or-restart irqbalance"

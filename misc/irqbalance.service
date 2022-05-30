@@ -8,7 +8,9 @@ ConditionCPUs=>1
 [Service]
 EnvironmentFile=-/usr/lib/irqbalance/defaults.env
 EnvironmentFile=-/path/to/irqbalance.env
-ExecStart=/usr/sbin/irqbalance --foreground $IRQBALANCE_ARGS
+Type=forking
+ExecStart=/usr/sbin/irqbalance $IRQBALANCE_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
 ReadOnlyPaths=/
 ReadWritePaths=/proc/irq
 RestrictAddressFamilies=AF_UNIX
